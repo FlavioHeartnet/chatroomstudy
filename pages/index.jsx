@@ -1,13 +1,29 @@
-import styles from '../styles/Home.module.scss'
-import { Button, Form } from 'semantic-ui-react'
+import styles from '../styles/Login.module.scss'
+import { Button, Form, Modal } from 'semantic-ui-react'
 import Head from 'next/head'
-import router from 'next/router'
 import {useState} from 'react'
+import router from 'next/router'
+import {auth} from '../firebase'
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function Home() {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [mensagem, setMensagem] = useState("")
+  
+  function login(){
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      console.log(user)
+      router.push('/home')
+    })
+    .catch((error) => {
+      setMensagem(error.message);
+    });
+      
+  }
 
   return (
     <div className={styles.container}>
@@ -34,10 +50,16 @@ export default function Home() {
             <label>Senha</label>
             <input onChange={e => setPassword(e.target.value)} placeholder='Digite sua senha' type={"password"} />
           </Form.Field>
-          <Button  primary className={styles.buttonPrimary} type={'submit'}>Entrar</Button>
+          <Modal
+            dimmer='blurring'
+            trigger={<Button  primary className={styles.buttonPrimary} type={'submit'}>Entrar</Button>}
+            header='Alerta'
+            content={mensagem}
+            actions={[{ key: 'done', content: 'OK', positive: true }]}
+          />
         </Form> 
         </main>
-         {modal}
+         
     </div>
   )
 }
