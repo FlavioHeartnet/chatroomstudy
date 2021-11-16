@@ -57,6 +57,7 @@ export default function Home() {
             content={mensagem}
             actions={[{ key: 'done', content: 'OK', positive: true }]}
           />
+          <Button type={'button'} onClick={() => router.push('/signup') }>Não tem cadastro? cadastre aqui</Button>
         </Form> 
         </main>
          
