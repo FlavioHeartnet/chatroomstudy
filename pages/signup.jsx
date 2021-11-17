@@ -5,6 +5,8 @@ import styles from './../styles/Signup.module.scss'
 import {createUserWithEmailAndPassword} from 'firebase/auth'
 import {auth, db} from './../firebase'
 import { collection, addDoc } from "firebase/firestore";
+import validateAuthCode from './../functions/generics'
+
 export default function Signup(){
 
     const router = useRouter()
@@ -56,7 +58,7 @@ export default function Signup(){
                 .catch((error) => {
                     setLoading(false)
                     const errorCode = error.code;
-                    const errorMessage = error.message;
+                    const errorMessage = validateAuthCode(errorCode);
                     setFormSucess({
                         error: true
                     })
@@ -64,7 +66,7 @@ export default function Signup(){
                         error: true,
                         success:false,
                         header: 'Não foi possivel concluir o cadastro :(',
-                        content: "Erro: "+errorMessage+ " Codigo do Erro: "+ errorCode
+                        content: errorMessage
                       })
                 });               
         }else{

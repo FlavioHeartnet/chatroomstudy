@@ -1,6 +1,95 @@
-.container{
-    padding: 1em;
+@use 'base.scss';
+
+.maincontainer{
     display: flex;
     flex-direction: row;
+    align-content: center;
+}
+
+.usercolumn {
+    flex-grow: 1;
+    
+}
+.chatcolumn {
+    flex-grow: 4;
+    background-color: base.$light-bege;
+    background-image: url('./../public/img/background.jpg');
+    background-blend-mode: multiply;
+    background-size: contain;
+    align-items: stretch;
+}
+
+.userinfo{
+    background-color: base.$light-gray;
+    padding: 1em;
     justify-content: space-between;
+    align-content: center;
+    display: flex;
+
+    p{
+        font-weight: bold;
+        font-size: large;
+    }
+}
+
+.searchbar{
+    background-color: base.$thin-gray;
+    padding: 1em;
+    display: flex;
+    
+}
+.searchbarinput{
+    flex-grow: 1;
+    input {
+        border-radius: 1.285714rem !important;
+        height: 35px;
+    }
+    
+}
+.chats{
+    padding: 1em;
+}
+.chats:hover{
+    cursor: pointer;
+    background-color: base.$light-gray;
+}
+.badge{
+    background-color: base.$green;
+    display: flex;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    color: base.$white;
+}
+.chatItem{
+    display: flex;
+    flex-direction: row;
+}
+.chatitemprofile{
+    border-radius: 50%;
+}
+.itemimage{
+    margin-top: 8px;
+}
+.itemtittle{
+   padding-left: 1em;
+   flex-grow: 2;
+}
+.itemsubtittle{
+    justify-content: right;
+}
+
+.profImage{
+    border-radius: 50%;
+}
+
+.addRoomButton {
+    width: 50px;
+    height: 50px;
+    border-width: 0;
+    background-color: transparent;
+    cursor: pointer;
+    color: white;
+    box-shadow: 2px 3px 5px 0.5px dimgrey;
 }
