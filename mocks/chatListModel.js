@@ -46,7 +46,6 @@ const ChatListItens = [
         description: 'lorem iptsum',
         photo: '/../public/img/profileUser.png'
     },
-    
 
 ]
 export default ChatListItens

@@ -1,0 +1,36 @@
+@use 'base.scss';
+$border: 2px solid black;
+
+.container{
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    height: 100vh;
+
+
+    .rooms{
+        flex-grow: 1;
+        border: $border;
+
+        .infobar{
+            height: 4em;
+            background-color: base.$light-gray;
+        }
+
+        .searchbar{
+            height: 4em;
+            background-color: base.$thin-gray;
+        }
+    }
+
+    .chat{
+        flex-grow: 2;
+        border: $border;
+
+        .header{
+            border: $border;
+            height: 4em;
+        }
+    }
+}
+
